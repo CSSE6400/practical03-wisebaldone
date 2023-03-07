@@ -1,11 +1,11 @@
-from os import environ
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
  
 def create_app(config_overrides=None): 
    app = Flask(__name__) 
  
-   app.config['SQLALCHEMY_DATABASE_URI'] = environ["SQLALCHEMY_DATABASE_URI"]
+   app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite:///db.sqlite")
    if config_overrides: 
        app.config.update(config_overrides)
  

@@ -11,7 +11,7 @@ if [[ $error -ne 0 ]]; then
 fi
 
 # Run image
-docker_container=$(docker run --rm -d -p 6400:6400 -e sqlite:///db.sqlite todo)
+docker_container=$(docker run --rm -d -p 6400:6400 todo)
 error=$?
 pid=$!
 if [[ $error -ne 0 ]]; then
