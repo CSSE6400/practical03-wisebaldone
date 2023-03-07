@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # Check that the health endpoint is returning 200 using docker-compose
-
-docker-compose up --build -d
+docker-compose build
+docker-compose up -d
 error=$?
 pid=$!
 if [[ $error -ne 0 ]]; then
@@ -11,7 +11,7 @@ if [[ $error -ne 0 ]]; then
 fi
 
 # Wait for the container to start
-sleep 10
+sleep 15
 
 # Check that the health endpoint is returning 200
 curl -s -o /dev/null -w "%{http_code}" http://localhost:6400/api/v1/health | grep 200
